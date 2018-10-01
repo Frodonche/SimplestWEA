@@ -6,21 +6,20 @@
         <title>Welcome page</title>
     </h:head>
     <h:body>
-
         <h:form>
 
             <fieldset>
                 <legend>Welcome Form</legend>
 
                 Name: 
-                <h:inputText value="#{hello.name}"
+                <h:inputText value="#{best.name}"
                              id="nameInput">
                 </h:inputText>
                 <h:message  for="nameInput"  styleClass="error" />
                 <br/>
 
                 <h:commandButton value="Greet" 
-                                 action="#{hello.greet()}"/>
+                                 action="#{best.greet()}"/>
 
                 <br/>
 

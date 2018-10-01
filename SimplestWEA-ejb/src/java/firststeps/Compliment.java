@@ -5,19 +5,13 @@
  */
 package firststeps;
 
-import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
+import javax.ejb.Local;
 
 /**
  *
- * @author cirstea
+ * @author guillaume
  */
-@Stateless
-@LocalBean
-public class Greeting {
-
-    public String greet(String name) {
-        return "Hello " + name;
-    }
-
+@Local
+public interface Compliment {
+    public String sayCompliment(String s);
 }

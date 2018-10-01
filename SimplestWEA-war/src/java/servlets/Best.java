@@ -3,30 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package firststeps;
+package servlets;
 
-import javax.ejb.EJB;
-import javax.inject.Named;
+import firststeps.Compliment;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  *
  * @author cirstea
  */
-@Named(value = "hello")
+@Named(value = "best")
 @RequestScoped
-public class Hello {
+public class Best {
 
     @Inject 
-    Greeting greet;
+    Compliment compliment;
 
     private String name;
    
     /**
      * Creates a new instance of Hello
      */
-    public Hello() {
+    public Best() {
         name = "Toto";
     }
 
@@ -38,12 +38,12 @@ public class Hello {
         this.name = name; 
     }
 
-    public String sayHello() {
+    public String sayBest() {
         System.out.println("Name = "+name);  
-        return greet.greet(name);  
+        return compliment.sayCompliment(name);  
     }
     
     public String greet() {
-        return "hello"; 
+        return "best"; 
     }
 }

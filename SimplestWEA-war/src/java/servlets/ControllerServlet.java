@@ -1,9 +1,12 @@
+package servlets;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import firststeps.Compliment;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.inject.Inject;
@@ -11,16 +14,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import firststeps.Greeting;
-import coucou.*;
 /**
  *
  * @author cirstea
  */
-public class ComplimentServlet extends HttpServlet {
+public class ControllerServlet extends HttpServlet {
 
     @Inject 
-    //Greeting greet;
     Compliment compliment;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,17 +40,18 @@ public class ComplimentServlet extends HttpServlet {
 
         String name = (String) request.getParameter("name");
        
-        //String helloMessage = greet.greet(name);
         String helloMessage = compliment.sayCompliment(name);
 
         out.println("<html>");
         out.println("<head>");
-        out.println("<title>Greetings</title>");
+        out.println("<title>Compliment Servlet</title>");
         out.println("</head>");
         out.println("<body>");
         out.println("<h1> "
                 + helloMessage + "</h1>");
 
+        
+        
         out.println("</body>");
         out.println("</html>");
 
