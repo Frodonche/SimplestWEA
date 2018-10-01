@@ -5,6 +5,7 @@
  */
 package coucou;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 /**
@@ -12,6 +13,7 @@ import javax.ejb.Stateless;
  * @author guillaume
  */
 @Stateless
+@LocalBean
 public class ComplimentBean implements Compliment {
 
     // Add business logic below. (Right-click in editor and choose

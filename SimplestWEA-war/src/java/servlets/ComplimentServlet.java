@@ -1,32 +1,27 @@
-package servlets;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-import coucou.ComplimentBean;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import javax.ejb.EJB;
-
+import firststeps.Greeting;
+import coucou.*;
 /**
  *
- * @author guillaume
+ * @author cirstea
  */
-@WebServlet(urlPatterns = {"/ComplimentServlet"})
 public class ComplimentServlet extends HttpServlet {
-    @EJB
-    private ComplimentBean sayComplimentBean;
-    
-    
+
+    @Inject 
+    //Greeting greet;
+    Compliment compliment;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,24 +33,27 @@ public class ComplimentServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String str1=request.getParameter("name");
-        String str2=sayComplimentBean.sayCompliment(str1);
-        
+        System.out.println("Compliment Servlet");
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ControllerServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ControllerServlet at " + request.getContextPath() + "</h1>");
-            out.println("<p>"+str2+"</p>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        PrintWriter out = response.getWriter();
+        String userPath = request.getServletPath();
+
+        String name = (String) request.getParameter("name");
+       
+        //String helloMessage = greet.greet(name);
+        String helloMessage = compliment.sayCompliment(name);
+
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>Greetings</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1> "
+                + helloMessage + "</h1>");
+
+        out.println("</body>");
+        out.println("</html>");
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
